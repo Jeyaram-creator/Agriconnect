@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Product Details</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='css/customer.css') }}">
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+ <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+
+        <div class="logo-section">
+            <div class="logo-icon">🌾</div>
+
+            <div>
+                <h2>AgriConnect</h2>
+                <span>Freshest • Better Tomorrow</span>
+            </div>
+        </div>
+
+
+        <!-- Navigation -->
+        <nav class="sidebar-menu">
+
+            <a href="{{ url_for('customer_dashboard') }}">
+                <span class="menu-icon">🏠</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="{{ url_for('customer_products') }}" class="active">
+                <span class="menu-icon">🌱</span>
+                <span>Products</span>
+            </a>
+
+            <a href="{{ url_for('customer_cart') }}">
+                <span class="menu-icon">🛒</span>
+                <span>My Cart</span>
+            </a>
+
+            <a href="{{ url_for('customer_orders') }}" >
+                <span class="menu-icon">📦</span>
+                <span>My Orders</span>
+            </a>
+
+            <a href="{{ url_for('customer_profile') }}">
+                <span class="menu-icon">👤</span>
+                <span>My Profile</span>
+            </a>
+
+            <a href="{{ url_for('logout') }}">
+                <span class="menu-icon">🚪</span>
+                <span>Logout</span>
+            </a>
+
+        </nav>
+
+
+        <!-- Decorative leaves -->
+        <div class="sidebar-decoration">
+            🌿
+        </div>
+
+    </aside>
+
+
+<div class="main-content">
+
+    <div class="topbar">
+
+        <h2>Product Details</h2>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>
+            {{ product[1] }}
+        </h2>
+
+        <br>
+
+        <p>
+            <strong>Category:</strong>
+            {{ product[2] }}
+        </p>
+
+        <p>
+            <strong>Description:</strong>
+            {{ product[3] }}
+        </p>
+
+        <p>
+            <strong>Farmer:</strong>
+            {{ product[9] }}
+        </p>
+
+        <p>
+            <strong>Location:</strong>
+            {{ product[7] }}
+        </p>
+
+        <p>
+            <strong>Available:</strong>
+            {{ product[4] }}
+            {{ product[5] }}
+        </p>
+        
+        <div class="price">
+            <strong>Price:</strong>
+            ₹{{ product[6] }}
+        </div>
+
+
+        <form method="POST">
+
+            <div class="form-group">
+
+                <label>
+                    Quantity
+                </label>
+
+                <input
+                    type="number"
+                    name="quantity"
+                    min="1"
+                    max="{{ product[4] }}"
+                    value="1"
+                    required>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="btn btn-primary">
+
+                🛒 Add to Cart
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

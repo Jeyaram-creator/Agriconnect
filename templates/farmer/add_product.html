@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Add Product - AgriMarket</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='css/farmer.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <div class="logo">
+        🌾 AgriConnect
+    </div>
+
+    <ul>
+
+        <li>
+            <a href="{{ url_for('farmer_dashboard') }}">
+                🏠 Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ url_for('farmer_profile') }}">
+                👤 My Profile
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ url_for('farmer_products') }}">
+                🌱 My Products
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ url_for('add_product') }}"
+               class="active">
+                ➕ Add Product
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ url_for('farmer_orders') }}">
+                🛒 Orders
+            </a>
+        </li>
+
+        <li>
+                <a href="{{ url_for('find_farmers') }}">
+                    🤝 Find Farmers
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('my_partnerships') }}">
+                    🔗 Partnerships
+                </a>
+            </li>
+
+        <li>
+            <a href="{{ url_for('logout') }}">
+                🚪 Logout
+            </a>
+        </li>
+
+    </ul>
+
+</div>
+
+
+<div class="main-content">
+
+    <div class="topbar">
+
+        <h2>Add New Product</h2>
+
+        <a href="{{ url_for('farmer_products') }}"
+           class="btn">
+
+            ← Back
+
+        </a>
+
+    </div>
+
+
+    <div class="card">
+
+        <form method="POST"
+              enctype="multipart/form-data">
+
+
+            <div class="form-group">
+
+                <label>
+                    Product Name
+                </label>
+
+                <input type="text"
+                       name="product_name"
+                       placeholder="Enter product name"
+                       required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Category
+                </label>
+
+                <select name="category"
+                        required>
+
+                    <option value="">
+                        Select Category
+                    </option>
+
+                    <option value="Vegetables">
+                        Vegetables
+                    </option>
+
+                    <option value="Fruits">
+                        Fruits
+                    </option>
+
+                    <option value="Grains">
+                        Grains
+                    </option>
+
+                    <option value="Pulses">
+                        Pulses
+                    </option>
+
+                    <option value="Spices">
+                        Spices
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Description
+                </label>
+
+                <textarea name="description"
+                          rows="4"
+                          placeholder="Product description"></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Quantity
+                </label>
+
+                <input type="number"
+                       name="quantity"
+                       min="1"
+                       step="0.01"
+                       placeholder="Enter quantity"
+                       required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Unit
+                </label>
+
+                <select name="unit"
+                        required>
+
+                    <option value="">
+                        Select Unit
+                    </option>
+
+                    <option value="kg">
+                        Kilogram (kg)
+                    </option>
+
+                    <option value="ton">
+                        Ton
+                    </option>
+
+                    <option value="quintal">
+                        Quintal
+                    </option>
+
+                    <option value="piece">
+                        Piece
+                    </option>
+
+                    <option value="litre">
+                        Litre
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Price
+                </label>
+
+                <input type="number"
+                       name="price"
+                       min="0"
+                       step="0.01"
+                       placeholder="Enter price"
+                       required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Location
+                </label>
+
+                <input type="text"
+                       name="location"
+                       placeholder="Enter product location">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Product Image
+                </label>
+
+                <input type="file"
+                       name="image"
+                       accept="image/*">
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <button type="submit"
+                        class="btn btn-primary">
+
+                    Add Product
+
+                </button>
+
+                <a href="{{ url_for('farmer_products') }}"
+                   class="btn">
+
+                    Cancel
+
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

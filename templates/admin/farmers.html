@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Manage Farmers</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='css/admin.css') }}">
+
+</head>
+
+<body>
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside class="sidebar">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            🌿
+        </div>
+
+        <div>
+            <div class="brand-name">
+             🌾  AgriConnect
+            </div>
+
+            <div class="brand-tagline">
+                Fresh Harvest • Better Tomorrow
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- MENU -->
+
+    <nav class="menu">
+
+        <a href="{{ url_for('admin_dashboard') }}"
+           class="menu-item ">
+
+            <span class="menu-icon">🏠</span>
+
+            <span>Dashboard</span>
+
+        </a>
+
+
+        <a href="{{ url_for('admin_farmers') }}"
+           class="menu-item active">
+
+            <span class="menu-icon">👨‍🌾</span>
+
+            <span>Farmers</span>
+
+        </a>
+
+
+        <a href="{{ url_for('admin_customers') }}"
+           class="menu-item">
+
+            <span class="menu-icon">👥</span>
+
+            <span>Customers</span>
+
+        </a>
+
+
+        <a href="{{ url_for('admin_products') }}"
+           class="menu-item">
+
+            <span class="menu-icon">🌱</span>
+
+            <span>Products</span>
+
+        </a>
+
+
+        <a href="{{ url_for('admin_partnerships') }}"
+           class="menu-item">
+
+            <span class="menu-icon">🤝</span>
+
+            <span>Partnerships</span>
+
+        </a>
+
+
+        <a href="{{ url_for('admin_orders') }}"
+           class="menu-item">
+
+            <span class="menu-icon">🛒</span>
+
+            <span>Orders</span>
+
+        </a>
+
+
+        <a href="{{ url_for('admin_sales') }}"
+           class="menu-item">
+
+            <span class="menu-icon">📊</span>
+
+            <span>Sales</span>
+
+        </a>
+
+
+        <div class="menu-divider"></div>
+
+
+        <a href="{{ url_for('logout') }}"
+           class="menu-item logout">
+
+            <span class="menu-icon">🚪</span>
+
+            <span>Logout</span>
+
+        </a>
+
+    </nav>
+
+
+    <!-- SIDEBAR BOTTOM -->
+
+   
+</aside>
+
+
+
+<div class="main-content">
+
+    <div class="topbar">
+
+        <h2>Manage Farmers</h2>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Farm</th>
+                        <th>Location</th>
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for farmer in farmers %}
+
+                    <tr>
+
+                        <td>
+                            {{ farmer[0] }}
+                        </td>
+
+                        <td>
+                            {{ farmer[1] }}
+                        </td>
+
+                        <td>
+                            {{ farmer[2] }}
+                        </td>
+
+                        <td>
+                            {{ farmer[3] or '-' }}
+                        </td>
+
+                        <td>
+                            {{ farmer[4] or '-' }}
+                        </td>
+
+                        <td>
+
+                            <a
+                                href="{{ url_for(
+                                'admin_delete_farmer',
+                                farmer_id=farmer[0]
+                                ) }}"
+                                class="btn btn-danger"
+                                onclick="return confirm(
+                                'Delete this farmer?'
+                                )">
+
+                                Delete
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    {% else %}
+
+                    <tr>
+
+                        <td colspan="6">
+                            No farmers found.
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

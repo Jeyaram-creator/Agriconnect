@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AgriConnect - Farmer Partnership and Sales System</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            <span class="logo-icon">🌱</span>
+            <span>Agri<span>Connect</span></span>
+        </div>
+
+        <nav>
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#products">Products</a>
+            <a href="#farmers">Farmers</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <a href="{{ url_for('login') }}" class="login-btn">
+            Login →
+        </a>
+
+    </header>
+
+
+    <!-- ================= HERO SECTION ================= -->
+
+    <section id="home" class="hero">
+
+        <!-- Decorative leaves -->
+        <div class="floating-leaf leaf1">🍃</div>
+        <div class="floating-leaf leaf2">🌿</div>
+        <div class="floating-leaf leaf3">🍃</div>
+        <div class="floating-leaf leaf4">🌱</div>
+
+        <div class="hero-content">
+
+            <div class="hero-text">
+
+                <p class="small-title">
+                    🌿 CONNECT • GROW • SELL
+                </p>
+
+                <h1>
+                    Growing Together,
+                    <span>Growing Better.</span>
+                </h1>
+
+                <p class="hero-description">
+                    AgriConnect brings farmers together to build strong
+                    partnerships, share agricultural products and reach
+                    customers through a simple and smart sales platform.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#products" class="primary-btn">
+                        Explore Products
+                        <span>→</span>
+                    </a>
+
+                    <a href="#about" class="secondary-btn">
+                        Discover More
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-image">
+
+                <div class="image-circle"></div>
+
+                <img src="{{ url_for('static', filename='images/farmer.jpg') }}">
+
+                <div class="floating-card card-one">
+                    🌱
+                    <div>
+                        <strong>Fresh Crops</strong>
+                        <small>Direct from Farmers</small>
+                    </div>
+                </div>
+
+                <div class="floating-card card-two">
+                    🤝
+                    <div>
+                        <strong>Farmer Partnership</strong>
+                        <small>Grow Together</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="hero-wave"></div>
+
+    </section>
+
+
+
+    <!-- ================= ABOUT SECTION ================= -->
+
+    <section id="about" class="about section">
+
+        <div class="about-image">
+
+            <div class="image-decoration"></div>
+
+           <img src="{{ url_for('static', filename='images/farm.jpg') }}">
+
+            <div class="experience-box">
+                <strong>100%</strong>
+                <span>Farmer Focused</span>
+            </div>
+
+        </div>
+
+
+        <div class="about-content">
+
+            <p class="section-tag">ABOUT AGRICONNECT</p>
+
+            <h2>
+                Empowering Farmers
+                <span>Through Connection</span>
+            </h2>
+
+            <p>
+                AgriConnect is a farmer partnership and sales system
+                designed to connect farmers and customers in one
+                digital platform.
+            </p>
+
+            <p>
+                Farmers can showcase their agricultural products,
+                collaborate with other farmers and manage their
+                sales easily.
+            </p>
+
+
+            <div class="feature-grid">
+
+                <div class="feature">
+                    <div class="feature-icon">👨‍🌾</div>
+                    <div>
+                        <h3>Farmer Community</h3>
+                        <p>Connect farmers and build partnerships.</p>
+                    </div>
+                </div>
+
+
+                <div class="feature">
+                    <div class="feature-icon">🥬</div>
+                    <div>
+                        <h3>Fresh Products</h3>
+                        <p>Discover quality agricultural products.</p>
+                    </div>
+                </div>
+
+
+                <div class="feature">
+                    <div class="feature-icon">🤝</div>
+                    <div>
+                        <h3>Partnership</h3>
+                        <p>Work together and grow agricultural business.</p>
+                    </div>
+                </div>
+
+
+                <div class="feature">
+                    <div class="feature-icon">📈</div>
+                    <div>
+                        <h3>Better Sales</h3>
+                        <p>Reach customers and improve product sales.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= PRODUCTS SECTION ================= -->
+
+    <section id="products" class="products section">
+
+        <div class="section-heading">
+
+            <p class="section-tag">OUR PRODUCTS</p>
+
+            <h2>
+                Fresh From
+                <span>Our Farmers</span>
+            </h2>
+
+            <p>
+                Explore agricultural products directly provided by
+                farmers through the AgriConnect platform.
+            </p>
+
+        </div>
+
+
+        <div class="product-container">
+
+            <div class="product-card">
+
+                <div class="product-image">
+                    <img src="{{ url_for('static', filename='images/vegetables.jpg') }}">
+                    <span>Fresh</span>
+                </div>
+
+                <div class="product-info">
+
+                    <h3>Fresh Vegetables</h3>
+
+                    <p>
+                        Healthy and fresh vegetables supplied
+                        directly by farmers.
+                    </p>
+
+                    <a href="#" class="product-btn">
+                        View Products →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="product-card">
+
+                <div class="product-image">
+                    <img src="{{ url_for('static', filename='images/fruits.jpg') }}">
+                    <span>Organic</span>
+                </div>
+
+                <div class="product-info">
+
+                    <h3>Fresh Fruits</h3>
+
+                    <p>
+                        Quality fruits from local farmers
+                        for customers.
+                    </p>
+
+                    <a href="#" class="product-btn">
+                        View Products →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="product-card">
+
+                <div class="product-image">
+                    <img src="{{ url_for('static', filename='images/grains.jpg') }}">
+                    <span>Quality</span>
+                </div>
+
+                <div class="product-info">
+
+                    <h3>Grains & Crops</h3>
+
+                    <p>
+                        Agricultural grains and crops available
+                        through our farmer network.
+                    </p>
+
+                    <a href="#" class="product-btn">
+                        View Products →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= FARMER SECTION ================= -->
+
+    <section id="farmers" class="farmer-section">
+
+        <div class="farmer-overlay"></div>
+
+        <div class="farmer-content">
+
+            <p class="section-tag">FOR OUR FARMERS</p>
+
+            <h2>
+                Together We Can
+                <span>Grow More</span>
+            </h2>
+
+            <p>
+                AgriConnect helps farmers find new opportunities,
+                build partnerships with other farmers and sell
+                agricultural products directly to customers.
+            </p>
+
+            <div class="farmer-buttons">
+
+                <a  href="{{ url_for('register') }}" class="primary-btn">
+                    Join as Farmer →
+                </a>
+
+                <a href="#about" class="outline-btn">
+                    Learn More
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= HOW IT WORKS ================= -->
+
+    <section class="process section">
+
+        <div class="section-heading">
+
+            <p class="section-tag">HOW IT WORKS</p>
+
+            <h2>
+                Simple Steps,
+                <span>Better Farming</span>
+            </h2>
+
+        </div>
+
+
+        <div class="process-container">
+
+            <div class="process-card">
+
+                <div class="process-number">01</div>
+
+                <div class="process-icon">👨‍🌾</div>
+
+                <h3>Join AgriConnect</h3>
+
+                <p>
+                    Farmers can register and create their
+                    agricultural profile.
+                </p>
+
+            </div>
+
+
+            <div class="process-card">
+
+                <div class="process-number">02</div>
+
+                <div class="process-icon">🤝</div>
+
+                <h3>Build Partnership</h3>
+
+                <p>
+                    Connect with other farmers and
+                    create useful partnerships.
+                </p>
+
+            </div>
+
+
+            <div class="process-card">
+
+                <div class="process-number">03</div>
+
+                <div class="process-icon">🥕</div>
+
+                <h3>Add Products</h3>
+
+                <p>
+                    Add your crops and agricultural
+                    products to the platform.
+                </p>
+
+            </div>
+
+
+            <div class="process-card">
+
+                <div class="process-number">04</div>
+
+                <div class="process-icon">📦</div>
+
+                <h3>Sell & Grow</h3>
+
+                <p>
+                    Reach customers, manage sales and
+                    grow your agricultural business.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= CONTACT / CTA ================= -->
+
+    <section id="contact" class="cta">
+
+        <div>
+
+            <p class="section-tag">START TODAY</p>
+
+            <h2>
+                Let's Build a
+                <span>Greener Future</span>
+                Together.
+            </h2>
+
+            <p>
+                Connect with farmers, discover fresh products
+                and make agricultural sales easier with AgriConnect.
+            </p>
+
+            <a href="{{ url_for('login') }}" class="primary-btn">
+                Get Started →
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-logo">
+            🌱 Agri<span>Connect</span>
+        </div>
+
+        <p>
+            Farmer Partnership and Sales System
+        </p>
+
+        <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#products">Products</a>
+            <a href="#farmers">Farmers</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+        <p class="copyright">
+            © 2026 AgriConnect. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        /* Navbar scroll effect */
+
+        window.addEventListener("scroll", function () {
+
+            const navbar = document.querySelector(".navbar");
+
+            if (window.scrollY > 50) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+
+        });
+
+
+        /* Reveal animation */
+
+        const sections = document.querySelectorAll(".section");
+
+        const observer = new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("show");
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.15
+            }
+        );
+
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+    </script>
+
+</body>
+
+</html>

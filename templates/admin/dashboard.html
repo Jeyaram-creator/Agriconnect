@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AgriMarket - Admin Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='css/admin.css') }}">
+
+</head>
+
+<body>
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside class="sidebar">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            🌿
+        </div>
+
+        <div>
+            <div class="brand-name">
+             🌾  AgriConnect
+            </div>
+
+            <div class="brand-tagline">
+                Fresh Harvest • Better Tomorrow
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- MENU -->
+
+    <nav class="menu">
+
+        <a href="{{ url_for('admin_dashboard') }}"
+           class="menu-item active">
+
+            <span class="menu-icon">🏠</span>
+
+            <span>Dashboard</span>
+
+        </a>
+
+
+        <a href="{{ url_for('admin_farmers') }}"
+           class="menu-item">
+
+            <span class="menu-icon">👨‍🌾</span>
+
+            <span>Farmers</span>
+
+        </a>
+
+
+        <a href="{{ url_for('admin_customers') }}"
+           class="menu-item">
+
+            <span class="menu-icon">👥</span>
+
+            <span>Customers</span>
+
+        </a>
+
+
+        <a href="{{ url_for('admin_products') }}"
+           class="menu-item">
+
+            <span class="menu-icon">🌱</span>
+
+            <span>Products</span>
+
+        </a>
+
+
+        <a href="{{ url_for('admin_partnerships') }}"
+           class="menu-item">
+
+            <span class="menu-icon">🤝</span>
+
+            <span>Partnerships</span>
+
+        </a>
+
+
+        <a href="{{ url_for('admin_orders') }}"
+           class="menu-item">
+
+            <span class="menu-icon">🛒</span>
+
+            <span>Orders</span>
+
+        </a>
+
+
+        <a href="{{ url_for('admin_sales') }}"
+           class="menu-item">
+
+            <span class="menu-icon">📊</span>
+
+            <span>Sales</span>
+
+        </a>
+
+
+        <div class="menu-divider"></div>
+
+
+        <a href="{{ url_for('logout') }}"
+           class="menu-item logout">
+
+            <span class="menu-icon">🚪</span>
+
+            <span>Logout</span>
+
+        </a>
+
+    </nav>
+
+
+    <!-- SIDEBAR BOTTOM -->
+
+   
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
+<main class="main-content">
+
+
+    <!-- =================================================
+         HEADER / HERO
+    ================================================== -->
+
+    <header class="dashboard-header">
+
+        <div class="header-content">
+
+            <div class="header-leaves">
+                🌿
+            </div>
+
+            <div>
+
+                <h1>
+                    Welcome Back, Admin!
+                </h1>
+
+                <p>
+                    Manage your agricultural marketplace efficiently
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ADMIN PROFILE -->
+
+        <div class="admin-profile">
+
+            <div class="profile-icon">
+                👨‍💼
+            </div>
+
+            <div class="profile-info">
+
+                <span>
+                    {{ session.get('fullname', 'Admin') }}
+                </span>
+
+                <small>
+                    System Admin
+                </small>
+
+            </div>
+
+            <span class="profile-arrow">
+                ▼
+            </span>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =================================================
+         STATISTICS
+    ================================================== -->
+
+    <section class="stats-grid">
+
+
+        <!-- FARMERS -->
+
+        <div class="stat-card farmers-card">
+
+            <div class="stat-icon">
+                🌿
+            </div>
+
+            <div class="stat-content">
+
+                <h3>
+                    Total Farmers
+                </h3>
+
+                <div class="stat-number">
+                    {{ farmers_count }}
+                </div>
+
+                <div class="stat-growth">
+                    ↑ 0%
+                    <span>from last month</span>
+                </div>
+
+            </div>
+
+            <div class="card-decoration">
+                🌿
+            </div>
+
+        </div>
+
+
+
+        <!-- CUSTOMERS -->
+
+        <div class="stat-card customers-card">
+
+            <div class="stat-icon">
+                👥
+            </div>
+
+            <div class="stat-content">
+
+                <h3>
+                    Total Customers
+                </h3>
+
+                <div class="stat-number">
+                    {{ customers_count }}
+                </div>
+
+                <div class="stat-growth">
+                    ↑ 0%
+                    <span>from last month</span>
+                </div>
+
+            </div>
+
+            <div class="card-decoration">
+                👥
+            </div>
+
+        </div>
+
+
+
+        <!-- PRODUCTS -->
+
+        <div class="stat-card products-card">
+
+            <div class="stat-icon">
+                📦
+            </div>
+
+            <div class="stat-content">
+
+                <h3>
+                    Total Products
+                </h3>
+
+                <div class="stat-number">
+                    {{ products_count }}
+                </div>
+
+                <div class="stat-growth">
+                    ↑ 0%
+                    <span>from last month</span>
+                </div>
+
+            </div>
+
+            <div class="card-decoration">
+                🌱
+            </div>
+
+        </div>
+
+
+
+        <!-- ORDERS -->
+
+        <div class="stat-card orders-card">
+
+            <div class="stat-icon">
+                🛒
+            </div>
+
+            <div class="stat-content">
+
+                <h3>
+                    Total Orders
+                </h3>
+
+                <div class="stat-number">
+                    {{ orders_count }}
+                </div>
+
+                <div class="stat-growth">
+                    ↑ 0%
+                    <span>from last month</span>
+                </div>
+
+            </div>
+
+            <div class="card-decoration">
+                🛒
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         TWO COLUMN SECTION
+    ================================================== -->
+
+    <section class="dashboard-grid">
+
+
+        <!-- =============================================
+             SALES OVERVIEW
+        ============================================== -->
+
+        <div class="sales-card">
+
+            <div class="section-heading">
+
+                <div class="heading-icon">
+                    📊
+                </div>
+
+                <div>
+
+                    <h2>
+                        Sales Overview
+                    </h2>
+
+                    <p>
+                        Total revenue generated through the platform.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="sales-value">
+
+                <span class="rupee-icon">
+                    ₹
+                </span>
+
+                <span>
+                    {{ total_sales }}
+                </span>
+
+            </div>
+
+
+            <p class="sales-description">
+                Total revenue generated through the platform.
+            </p>
+
+
+            <!-- Agriculture decoration -->
+
+            <div class="sales-land">
+
+                <div class="hill hill-one"></div>
+
+                <div class="hill hill-two"></div>
+
+                <div class="plant">
+                    🌱
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =============================================
+             QUICK ACTIONS
+        ============================================== -->
+
+        <div class="quick-actions">
+
+            <div class="quick-header">
+
+                <div class="quick-icon">
+                    ⚡
+                </div>
+
+                <div>
+
+                    <h2>
+                        Quick Actions
+                    </h2>
+
+                    <p>
+                        Manage your platform with ease
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="action-grid">
+
+
+                <a href="{{ url_for('admin_farmers') }}"
+                   class="action-card green-action">
+
+                    <span class="action-icon">
+                        👥
+                    </span>
+
+                    <span class="action-text">
+                        View Farmers
+                    </span>
+
+                    <span class="action-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+
+                <a href="{{ url_for('admin_products') }}"
+                   class="action-card yellow-action">
+
+                    <span class="action-icon">
+                        📦
+                    </span>
+
+                    <span class="action-text">
+                        Manage Products
+                    </span>
+
+                    <span class="action-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+
+                <a href="{{ url_for('admin_orders') }}"
+                   class="action-card blue-action">
+
+                    <span class="action-icon">
+                        🛒
+                    </span>
+
+                    <span class="action-text">
+                        View Orders
+                    </span>
+
+                    <span class="action-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+
+                <a href="{{ url_for('admin_sales') }}"
+                   class="action-card purple-action">
+
+                    <span class="action-icon">
+                        📊
+                    </span>
+
+                    <span class="action-text">
+                        View Sales
+                    </span>
+
+                    <span class="action-arrow">
+                        →
+                    </span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         RECENT ORDERS
+    ================================================== -->
+
+    <section class="orders-card">
+
+        <div class="orders-heading">
+
+            <div class="section-heading">
+
+                <div class="heading-icon order-heading-icon">
+                    🛒
+                </div>
+
+                <div>
+
+                    <h2>
+                        Recent Orders
+                    </h2>
+
+                    <p>
+                        Latest orders placed on the platform
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <a href="{{ url_for('admin_orders') }}"
+               class="view-all">
+
+                View All →
+                
+            </a>
+
+        </div>
+
+
+
+        <!-- TABLE -->
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Order ID
+                        </th>
+
+                        <th>
+                            Customer
+                        </th>
+
+                        <th>
+                            Amount
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for order in recent_orders %}
+
+                    <tr>
+
+                        <td class="order-id">
+                            #{{ order[0] }}
+                        </td>
+
+                        <td>
+                            {{ order[1] }}
+                        </td>
+
+                        <td class="amount">
+                            ₹{{ order[2] }}
+                        </td>
+
+                        <td>
+
+                            <span class="status active">
+                                {{ order[3] }}
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+                    {% else %}
+
+                    <tr>
+
+                        <td colspan="4"
+                            class="no-orders">
+
+                            🌱 No orders available.
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<script src="{{ url_for('static',
+             filename='js/admin.js') }}">
+</script>
+
+
+</body>
+</html>

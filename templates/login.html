@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Login - AgriMarket</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/auth.css') }}">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+</head>
+
+
+<body>
+
+    <!-- Background Animation -->
+
+    <div class="background">
+
+        <div class="circle circle-one"></div>
+
+        <div class="circle circle-two"></div>
+
+        <div class="circle circle-three"></div>
+
+    </div>
+
+
+    <!-- Login Page -->
+
+    <div class="auth-page">
+
+        <div class="auth-card login-card">
+
+            <!-- Logo -->
+
+            <div class="logo">
+                🌾
+            </div>
+
+
+            <h1>AgriConnect</h1>
+
+            <p class="subtitle">
+                Welcome back! Please login to your account.
+            </p>
+
+
+            <!-- Flash Messages -->
+
+            {% with messages = get_flashed_messages() %}
+
+                {% if messages %}
+
+                    {% for message in messages %}
+
+                        <div class="flash">
+                            {{ message }}
+                        </div>
+
+                    {% endfor %}
+
+                {% endif %}
+
+            {% endwith %}
+
+
+            <!-- Login Form -->
+
+            <form method="POST"
+                  action="{{ url_for('login') }}">
+
+                <!-- Email -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email
+                    </label>
+
+                    <div class="input-box">
+
+                        <span class="input-icon">
+                            ✉️
+                        </span>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Password -->
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <div class="input-box">
+
+                        <span class="input-icon">
+                            🔒
+                        </span>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Login Button -->
+
+                <button type="submit"
+                        class="auth-btn">
+
+                    <span>Login</span>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </button>
+
+            </form>
+
+
+            <!-- Register Link -->
+
+            <p class="auth-link">
+
+                Don't have an account?
+
+                <a href="{{ url_for('register') }}">
+                    Register
+                </a>
+
+            </p>
+
+
+            <!-- Bottom Text -->
+
+            <div class="bottom-text">
+                🌱 Grow • Sell • Succeed
+            </div>
+
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

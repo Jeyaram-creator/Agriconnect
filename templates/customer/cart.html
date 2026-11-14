@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>My Cart</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='css/customer.css') }}">
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+ <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+
+        <div class="logo-section">
+            <div class="logo-icon">🌾</div>
+
+            <div>
+                <h2>AgriConnect</h2>
+                <span>Freshest • Better Tomorrow</span>
+            </div>
+        </div>
+
+
+        <!-- Navigation -->
+        <nav class="sidebar-menu">
+
+            <a href="{{ url_for('customer_dashboard') }}">
+                <span class="menu-icon">🏠</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="{{ url_for('customer_products') }}">
+                <span class="menu-icon">🌱</span>
+                <span>Products</span>
+            </a>
+
+            <a href="{{ url_for('customer_cart') }}" class="active">
+                <span class="menu-icon">🛒</span>
+                <span>My Cart</span>
+            </a>
+
+            <a href="{{ url_for('customer_orders') }}" >
+                <span class="menu-icon">📦</span>
+                <span>My Orders</span>
+            </a>
+
+            <a href="{{ url_for('customer_profile') }}">
+                <span class="menu-icon">👤</span>
+                <span>My Profile</span>
+            </a>
+
+            <a href="{{ url_for('logout') }}">
+                <span class="menu-icon">🚪</span>
+                <span>Logout</span>
+            </a>
+
+        </nav>
+
+
+        <!-- Decorative leaves -->
+        <div class="sidebar-decoration">
+            🌿
+        </div>
+
+    </aside>
+
+<div class="main-content">
+
+    <div class="topbar">
+
+        <h2>My Shopping Cart</h2>
+
+    </div>
+
+
+    <div class="card">
+
+        {% if cart_items %}
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Product</th>
+                        <th>Farmer</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Subtotal</th>
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for item in cart_items %}
+
+                    <tr>
+
+                        <td>
+                            {{ item.product_name }}
+                        </td>
+
+                        <td>
+                            {{ item.farmer_name }}
+                        </td>
+
+                        <td>
+                            ₹{{ item.price }}
+                        </td>
+
+                        <td>
+                            {{ item.quantity }}
+                        </td>
+
+                        <td>
+                            ₹{{ item.subtotal }}
+                        </td>
+
+                        <td>
+
+                            <a
+                                href="{{ url_for(
+                                'remove_from_cart',
+                                product_id=item.product_id
+                                ) }}"
+                                class="btn btn-danger">
+
+                                Remove
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <br>
+
+
+        <h2>
+            Total: ₹{{ total }}
+        </h2>
+
+
+        <br>
+
+
+        <a
+            href="{{ url_for('checkout') }}"
+            class="btn btn-primary">
+
+            Proceed to Checkout
+
+        </a>
+
+
+        {% else %}
+
+        <h3>
+            Your cart is empty.
+        </h3>
+
+        <br>
+
+        <a
+            href="{{ url_for('customer_products') }}"
+            class="btn btn-primary">
+
+            Continue Shopping
+
+        </a>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

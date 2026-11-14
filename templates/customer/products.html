@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Products</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='css/customer.css') }}">
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+ <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+
+        <div class="logo-section">
+            <div class="logo-icon">🌾</div>
+
+            <div>
+                <h2>AgriConnect</h2>
+                <span>Freshest • Better Tomorrow</span>
+            </div>
+        </div>
+
+
+        <!-- Navigation -->
+        <nav class="sidebar-menu">
+
+            <a href="{{ url_for('customer_dashboard') }}">
+                <span class="menu-icon">🏠</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="{{ url_for('customer_products') }}" class="active">
+                <span class="menu-icon">🌱</span>
+                <span>Products</span>
+            </a>
+
+            <a href="{{ url_for('customer_cart') }}">
+                <span class="menu-icon">🛒</span>
+                <span>My Cart</span>
+            </a>
+
+            <a href="{{ url_for('customer_orders') }}" >
+                <span class="menu-icon">📦</span>
+                <span>My Orders</span>
+            </a>
+
+            <a href="{{ url_for('customer_profile') }}">
+                <span class="menu-icon">👤</span>
+                <span>My Profile</span>
+            </a>
+
+            <a href="{{ url_for('logout') }}">
+                <span class="menu-icon">🚪</span>
+                <span>Logout</span>
+            </a>
+
+        </nav>
+
+
+        <!-- Decorative leaves -->
+        <div class="sidebar-decoration">
+            🌿
+        </div>
+
+    </aside>
+
+
+<div class="main-content">
+
+    <div class="topbar">
+
+        <h2>Browse Products</h2>
+
+        <a href="{{ url_for('customer_cart') }}"
+           class="btn btn-primary">
+
+            🛒 Cart
+
+        </a>
+
+    </div>
+
+
+    <!-- SEARCH -->
+
+    <form method="GET"
+          class="search-box">
+
+        <input
+            type="text"
+            name="search"
+            placeholder="Search products..."
+            value="{{ search }}">
+
+        <select name="category">
+
+            <option value="">
+                All Categories
+            </option>
+
+            <option value="Vegetable">
+                Vegetable
+            </option>
+
+            <option value="Fruit">
+                Fruit
+            </option>
+
+            <option value="Grain">
+                Grain
+            </option>
+
+            <option value="Pulse">
+                Pulse
+            </option>
+
+            <option value="Spice">
+                Spice
+            </option>
+
+        </select>
+
+        <button
+            type="submit"
+            class="btn btn-primary">
+
+            🔍 Search
+
+        </button>
+
+    </form>
+
+
+    <!-- PRODUCTS -->
+
+    <div class="product-grid">
+
+        {% for product in products %}
+
+        <div class="product-card">
+
+            {% if product[6] %}
+
+            <img
+                src="{{ url_for(
+                'static',
+                filename='uploads/products/' + product[6]
+                ) }}">
+
+            {% else %}
+
+            <img
+                src="{{ url_for(
+                'static',
+                filename='images/hero.jpg'
+                ) }}">
+
+            {% endif %}
+
+
+            <div class="product-info">
+
+                <h3>
+                    {{ product[1] }}
+                </h3>
+
+                <p>
+                    Category: {{ product[2] }}
+                </p>
+
+                <p>
+                    Farmer: {{ product[7] }}
+                </p>
+
+                <p>
+                    Available:
+                    {{ product[3] }}
+                    {{ product[4] }}
+                </p>
+
+                <div class="price">
+                    ₹{{ product[5] }}
+                </div>
+
+
+                <a
+                    href="{{ url_for(
+                    'product_details',
+                    product_id=product[0]
+                    ) }}"
+                    class="btn btn-primary">
+
+                    View Details
+
+                </a>
+
+            </div>
+
+        </div>
+
+        {% else %}
+
+        <div class="card">
+
+            <h3>No products found.</h3>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

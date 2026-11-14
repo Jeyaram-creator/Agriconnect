@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Customer Dashboard</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Customer CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/customer.css') }}">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- ================= SIDEBAR ================= -->
+        <aside class="sidebar">
+
+            <div class="logo-section">
+                <div class="logo-icon">🌾</div>
+
+                <div>
+                    <h2>AgriConnect</h2>
+                    <span>Freshest • Better Tomorrow</span>
+                </div>
+            </div>
+
+
+            <!-- Navigation -->
+            <nav class="sidebar-menu">
+
+                <a href="{{ url_for('customer_dashboard') }}" class="active">
+                    <span class="menu-icon">🏠</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="{{ url_for('customer_products') }}">
+                    <span class="menu-icon">🌱</span>
+                    <span>Products</span>
+                </a>
+
+                <a href="{{ url_for('customer_cart') }}">
+                    <span class="menu-icon">🛒</span>
+                    <span>My Cart</span>
+                </a>
+
+                <a href="{{ url_for('customer_orders') }}">
+                    <span class="menu-icon">📦</span>
+                    <span>My Orders</span>
+                </a>
+
+                <a href="{{ url_for('customer_profile') }}">
+                    <span class="menu-icon">👤</span>
+                    <span>My Profile</span>
+                </a>
+
+                <a href="{{ url_for('logout') }}">
+                    <span class="menu-icon">🚪</span>
+                    <span>Logout</span>
+                </a>
+
+            </nav>
+
+
+            <!-- Decorative leaves -->
+            <div class="sidebar-decoration">
+                🌿
+            </div>
+
+        </aside>
+
+
+        <!-- ================= MAIN CONTENT ================= -->
+        <main class="main-content">
+
+
+            <!-- ================= TOP HEADER ================= -->
+            <header class="top-header">
+
+                <div>
+                    <p class="small-title">Welcome back 👋</p>
+                    <h1>Customer Dashboard</h1>
+                </div>
+
+                <div class="user-area">
+
+                    <div class="user-info">
+
+                        <div class="user-avatar">
+                            👤
+                        </div>
+
+                        <div>
+                            <strong>
+                                {{ session.get('fullname') or session.get('username') or 'Customer' }}
+                            </strong>
+
+                            <span>Customer</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- ================= STATISTICS ================= -->
+            <section class="stats-grid">
+
+
+                <!-- Total Orders -->
+                <div class="stat-card orders-card">
+
+                    <div class="stat-top">
+                        <div class="stat-icon">
+                            📦
+                        </div>
+
+                        <span class="stat-label">
+                            Orders
+                        </span>
+                    </div>
+
+                    <div class="stat-number">
+                        {{ total_orders or 0 }}
+                    </div>
+
+                    <p>Total Orders</p>
+
+                </div>
+
+
+                <!-- Pending Orders -->
+                <div class="stat-card pending-card">
+
+                    <div class="stat-top">
+                        <div class="stat-icon">
+                            ⏳
+                        </div>
+
+                        <span class="stat-label">
+                            Pending
+                        </span>
+                    </div>
+
+                    <div class="stat-number">
+                        {{ pending_orders or 0 }}
+                    </div>
+
+                    <p>Pending Orders</p>
+
+                </div>
+
+
+                <!-- Delivered -->
+                <div class="stat-card delivered-card">
+
+                    <div class="stat-top">
+                        <div class="stat-icon">
+                            ✅
+                        </div>
+
+                        <span class="stat-label">
+                            Completed
+                        </span>
+                    </div>
+
+                    <div class="stat-number">
+                        {{ delivered_orders or 0 }}
+                    </div>
+
+                    <p>Delivered Orders</p>
+
+                </div>
+
+
+                <!-- Total Spending -->
+                <div class="stat-card spending-card">
+
+                    <div class="stat-top">
+                        <div class="stat-icon">
+                            💰
+                        </div>
+
+                        <span class="stat-label">
+                            Spending
+                        </span>
+                    </div>
+
+                    <div class="stat-number money">
+                        ₹{{ "%.2f"|format(total_spent|float) }}
+                    </div>
+
+                    <p>Total Spending</p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= WELCOME CARD ================= -->
+            <section class="welcome-card">
+
+                <div class="welcome-content">
+
+                    <div>
+
+                        <span class="welcome-tag">
+                            🌱 AGRICONNECT
+                        </span>
+
+                        <h2>
+                            Welcome,
+                            {{ session.get('fullname') or session.get('username') or 'Customer' }}!
+                        </h2>
+
+                        <p>
+                            Buy fresh agricultural products directly from farmers
+                            and enjoy quality products delivered to your doorstep.
+                        </p>
+
+                        <a href="{{ url_for('customer_products') }}" class="shopping-btn">
+                            🛒 Start Shopping
+                        </a>
+
+                    </div>
+
+                    <div class="welcome-illustration">
+                        🌾
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= QUICK ACTIONS ================= -->
+            <section class="quick-section">
+
+                <div class="section-heading">
+                    <div>
+                        <span>QUICK ACCESS</span>
+                        <h2>What would you like to do?</h2>
+                    </div>
+                </div>
+
+
+                <div class="quick-grid">
+
+                    <a href="{{ url_for('customer_products') }}" class="quick-card">
+
+                        <div class="quick-icon">🌱</div>
+
+                        <div>
+                            <h3>Browse Products</h3>
+                            <p>Explore fresh farm products</p>
+                        </div>
+
+                        <span class="arrow">→</span>
+
+                    </a>
+
+
+                    <a href="{{ url_for('customer_cart') }}" class="quick-card">
+
+                        <div class="quick-icon">🛒</div>
+
+                        <div>
+                            <h3>My Cart</h3>
+                            <p>View your selected products</p>
+                        </div>
+
+                        <span class="arrow">→</span>
+
+                    </a>
+
+
+                    <a href="{{ url_for('customer_orders') }}" class="quick-card">
+
+                        <div class="quick-icon">📦</div>
+
+                        <div>
+                            <h3>My Orders</h3>
+                            <p>Track your orders</p>
+                        </div>
+
+                        <span class="arrow">→</span>
+
+                    </a>
+
+
+                    <a href="{{ url_for('customer_profile') }}" class="quick-card">
+
+                        <div class="quick-icon">👤</div>
+
+                        <div>
+                            <h3>My Profile</h3>
+                            <p>Manage your account</p>
+                        </div>
+
+                        <span class="arrow">→</span>
+
+                    </a>
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+</body>
+
+</html>

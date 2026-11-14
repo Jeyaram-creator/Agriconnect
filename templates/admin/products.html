@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Products</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='css/admin.css') }}">
+
+</head>
+
+<body>
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside class="sidebar">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            🌿
+        </div>
+
+        <div>
+            <div class="brand-name">
+              🌾 AgriConnect
+            </div>
+
+            <div class="brand-tagline">
+                Fresh Harvest • Better Tomorrow
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- MENU -->
+
+    <nav class="menu">
+
+        <a href="{{ url_for('admin_dashboard') }}"
+           class="menu-item ">
+
+            <span class="menu-icon">🏠</span>
+
+            <span>Dashboard</span>
+
+        </a>
+
+
+        <a href="{{ url_for('admin_farmers') }}"
+           class="menu-item">
+
+            <span class="menu-icon">👨‍🌾</span>
+
+            <span>Farmers</span>
+
+        </a>
+
+
+        <a href="{{ url_for('admin_customers') }}"
+           class="menu-item">
+
+            <span class="menu-icon">👥</span>
+
+            <span>Customers</span>
+
+        </a>
+
+
+        <a href="{{ url_for('admin_products') }}"
+           class="menu-item active">
+
+            <span class="menu-icon">🌱</span>
+
+            <span>Products</span>
+
+        </a>
+
+
+        <a href="{{ url_for('admin_partnerships') }}"
+           class="menu-item">
+
+            <span class="menu-icon">🤝</span>
+
+            <span>Partnerships</span>
+
+        </a>
+
+
+        <a href="{{ url_for('admin_orders') }}"
+           class="menu-item">
+
+            <span class="menu-icon">🛒</span>
+
+            <span>Orders</span>
+
+        </a>
+
+
+        <a href="{{ url_for('admin_sales') }}"
+           class="menu-item">
+
+            <span class="menu-icon">📊</span>
+
+            <span>Sales</span>
+
+        </a>
+
+
+        <div class="menu-divider"></div>
+
+
+        <a href="{{ url_for('logout') }}"
+           class="menu-item logout">
+
+            <span class="menu-icon">🚪</span>
+
+            <span>Logout</span>
+
+        </a>
+
+    </nav>
+
+
+    <!-- SIDEBAR BOTTOM -->
+
+   
+</aside>
+
+
+<div class="main-content">
+
+    <div class="topbar">
+
+        <h2>Product Management</h2>
+
+    </div>
+
+
+    <div class="card">
+
+        <h3>All Agricultural Products</h3>
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>ID</th>
+                        <th>Product</th>
+                        <th>Category</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Farmer</th>
+                        <th>Status</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for product in products %}
+
+                    <tr>
+
+                        <td>{{ product[0] }}</td>
+                        <td>{{ product[1] }}</td>
+                        <td>{{ product[2] }}</td>
+                        <td>{{ product[3] }}</td>
+                        <td>₹{{ product[4] }}</td>
+                        <td>{{ product[5] }}</td>
+
+                        <td>
+                            <span class="status active">
+                                {{ product[6] }}
+                            </span>
+                        </td>
+
+                    </tr>
+
+                    {% else %}
+
+                    <tr>
+                        <td colspan="7">
+                            No products available.
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

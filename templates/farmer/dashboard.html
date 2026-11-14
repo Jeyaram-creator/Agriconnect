@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Farmer Dashboard</title>
+
+    <link rel="stylesheet" href="{{ url_for('static',
+          filename='css/farmer.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <div class="sidebar">
+
+        <div class="logo">
+           🌾 AgriConnect
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="{{ url_for('farmer_dashboard') }}" class="active">
+                    🏠 Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('farmer_profile') }}">
+                    👤 My Profile
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('farmer_products') }}">
+                    🌱 My Products
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('add_product') }}">
+                    ➕ Add Product
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('farmer_orders') }}">
+                    🛒 Orders
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('find_farmers') }}">
+                    🤝 Find Farmers
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('my_partnerships') }}">
+                    🔗 Partnerships
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('logout') }}">
+                    🚪 Logout
+                </a>
+            </li>
+
+        </ul>
+
+    </div>
+
+
+    <!-- MAIN -->
+
+    <div class="main-content">
+
+        <div class="topbar">
+
+            <h2>Farmer Dashboard</h2>
+
+            <div>
+                👨‍🌾 {{ session.get('fullname') }}
+            </div>
+
+        </div>
+
+
+        <!-- STATISTICS -->
+
+        <div class="stats">
+
+            <div class="stat-card">
+
+                <h3>My Products</h3>
+
+                <div class="number">
+                    {{ products_count }}
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <h3>Total Stock</h3>
+
+                <div class="number">
+                    {{ total_stock }}
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <h3>Orders</h3>
+
+                <div class="number">
+                    {{ orders_count }}
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <h3>Total Revenue</h3>
+
+                <div class="number">
+                    ₹{{ total_sales }}
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- QUICK ACTIONS -->
+
+        <div class="card">
+
+            <h3>Quick Actions</h3>
+
+            <a href="{{ url_for('add_product') }}" class="btn btn-primary">
+
+                ➕ Add New Product
+
+            </a>
+
+            &nbsp;
+
+            <a href="{{ url_for('farmer_products') }}" class="btn btn-primary">
+
+                🌱 Manage Products
+
+            </a>
+
+            &nbsp;
+
+            <a href="{{ url_for('farmer_orders') }}" class="btn btn-primary">
+
+                🛒 View Orders
+
+            </a>
+
+        </div>
+
+
+        <!-- RECENT PRODUCTS -->
+
+        <div class="card">
+
+            <h3>My Recent Products</h3>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Product</th>
+                            <th>Category</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Status</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        {% for product in recent_products %}
+
+                        <tr>
+
+                            <td>{{ product[0] }}</td>
+                            <td>{{ product[1] }}</td>
+                            <td>{{ product[2] }} {{ product[3] }}</td>
+                            <td>₹{{ product[4] }}</td>
+                            <td>{{ product[5] }}</td>
+
+                        </tr>
+
+                        {% else %}
+
+                        <tr>
+
+                            <td colspan="6">
+                                No products added yet.
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+    <script src="{{ url_for(
+    'static',
+    filename='js/farmer.js'
+) }}"></script>
+
+</body>
+
+</html>

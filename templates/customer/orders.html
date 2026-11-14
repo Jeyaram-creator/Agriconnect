@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>My Orders</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='css/customer.css') }}">
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+ <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+
+        <div class="logo-section">
+            <div class="logo-icon">🌾</div>
+
+            <div>
+                <h2>AgriConnect</h2>
+                <span>Freshest • Better Tomorrow</span>
+            </div>
+        </div>
+
+
+        <!-- Navigation -->
+        <nav class="sidebar-menu">
+
+            <a href="{{ url_for('customer_dashboard') }}">
+                <span class="menu-icon">🏠</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="{{ url_for('customer_products') }}">
+                <span class="menu-icon">🌱</span>
+                <span>Products</span>
+            </a>
+
+            <a href="{{ url_for('customer_cart') }}">
+                <span class="menu-icon">🛒</span>
+                <span>My Cart</span>
+            </a>
+
+            <a href="{{ url_for('customer_orders') }}" class="active">
+                <span class="menu-icon">📦</span>
+                <span>My Orders</span>
+            </a>
+
+            <a href="{{ url_for('customer_profile') }}">
+                <span class="menu-icon">👤</span>
+                <span>My Profile</span>
+            </a>
+
+            <a href="{{ url_for('logout') }}">
+                <span class="menu-icon">🚪</span>
+                <span>Logout</span>
+            </a>
+
+        </nav>
+
+
+        <!-- Decorative leaves -->
+        <div class="sidebar-decoration">
+            🌿
+        </div>
+
+    </aside>
+
+
+<div class="main-content">
+
+    <div class="topbar">
+
+        <h2>My Orders</h2>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Order ID</th>
+                        <th>Total</th>
+                        <th>Payment</th>
+                        <th>Status</th>
+                        <th>Date</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for order in orders %}
+
+                    <tr>
+
+                        <td>
+                            #{{ order[0] }}
+                        </td>
+
+                        <td>
+                            ₹{{ order[1] }}
+                        </td>
+
+                        <td>
+                            {{ order[2] }}
+                        </td>
+
+                        <td>
+                            {{ order[3] }}
+                        </td>
+
+                        <td>
+                            {{ order[4] }}
+                        </td>
+
+                    </tr>
+
+                    {% else %}
+
+                    <tr>
+
+                        <td colspan="5">
+                            No orders found.
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

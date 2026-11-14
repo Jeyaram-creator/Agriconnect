@@ -1,0 +1,912 @@
+/* =========================================================
+   AGRICONNECT - CUSTOMER DASHBOARD
+   COMPLETE MERGED DESIGN
+========================================================= */
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Poppins", Arial, sans-serif;
+    background: #f2f7f3;
+    color: #26382c;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* =========================================================
+   MAIN DASHBOARD
+========================================================= */
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #075c31 0%,
+            #07552e 50%,
+            #043e23 100%
+        );
+
+    color: white;
+
+    padding: 28px 14px;
+
+    overflow: hidden;
+
+    z-index: 1000;
+
+    box-shadow:
+        5px 0 25px rgba(0, 60, 30, 0.08);
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo-section {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 0 14px;
+
+    margin-bottom: 45px;
+}
+
+.logo-icon {
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 26px;
+}
+
+.logo-section h2 {
+    font-size: 24px;
+
+    font-weight: 700;
+
+    line-height: 1;
+}
+
+.logo-section span {
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 8px;
+
+    color: #bde6c8;
+
+    letter-spacing: 0.3px;
+}
+
+
+/* =========================================================
+   SIDEBAR MENU
+========================================================= */
+
+.sidebar-menu {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+.sidebar-menu a {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 13px 17px;
+
+    border-radius: 10px;
+
+    color: #ecf8ef;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* Hover */
+
+.sidebar-menu a:hover {
+    background: rgba(255, 255, 255, 0.10);
+
+    transform: translateX(4px);
+}
+
+
+/* Active menu */
+
+.sidebar-menu a.active {
+    background:
+        linear-gradient(
+            135deg,
+            #37b64d,
+            #299f42
+        );
+
+    color: white;
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.13);
+}
+
+
+/* Menu icon */
+
+.menu-icon {
+    width: 22px;
+
+    text-align: center;
+
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   SIDEBAR DECORATION
+========================================================= */
+
+.sidebar-decoration {
+    position: absolute;
+
+    left: 15px;
+    bottom: 25px;
+
+    font-size: 120px;
+
+    opacity: 0.08;
+
+    transform: rotate(-10deg);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.main-content {
+    width: calc(100% - 250px);
+
+    margin-left: 250px;
+
+    min-height: 100vh;
+
+    padding: 28px 30px 45px;
+
+    background:
+        radial-gradient(
+            circle at 95% 5%,
+            rgba(84, 166, 91, 0.13),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 20% 100%,
+            rgba(125, 190, 110, 0.08),
+            transparent 30%
+        ),
+        #f2f7f3;
+}
+
+
+/* =========================================================
+   TOP HEADER
+========================================================= */
+
+.top-header {
+    width: 100%;
+
+    min-height: 75px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 17px 23px;
+
+    margin-bottom: 24px;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    border-radius: 18px;
+
+    border-top: 4px solid #2c9146;
+
+    box-shadow:
+        0 8px 25px rgba(25, 75, 38, 0.07);
+}
+
+
+/* Small welcome text */
+
+.small-title {
+    color: #819087;
+
+    font-size: 11px;
+
+    font-weight: 500;
+
+    margin-bottom: 2px;
+}
+
+
+/* Dashboard title */
+
+.top-header h1 {
+    color: #176c36;
+
+    font-size: 26px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   USER AREA
+========================================================= */
+
+.user-area {
+    display: flex;
+
+    align-items: center;
+}
+
+.user-info {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+/* User avatar */
+
+.user-avatar {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #e5f3e8;
+
+    font-size: 20px;
+
+    border: 2px solid #d4ead8;
+}
+
+
+/* Username */
+
+.user-info strong {
+    display: block;
+
+    color: #294732;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+/* Customer text */
+
+.user-info span {
+    display: block;
+
+    margin-top: 1px;
+
+    color: #89958c;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   STATISTICS GRID
+========================================================= */
+
+.stats-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 16px;
+
+    margin-bottom: 24px;
+}
+
+
+/* =========================================================
+   STAT CARD
+========================================================= */
+
+.stat-card {
+    position: relative;
+
+    min-height: 150px;
+
+    padding: 18px;
+
+    background: #ffffff;
+
+    border: 1px solid #e2ebe4;
+
+    border-radius: 17px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 6px 20px rgba(30, 80, 40, 0.065);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+/* Hover */
+
+.stat-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #c4ddc9;
+
+    box-shadow:
+        0 13px 28px rgba(30, 80, 40, 0.12);
+}
+
+
+/* =========================================================
+   STAT TOP
+========================================================= */
+
+.stat-top {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 14px;
+}
+
+
+/* =========================================================
+   STAT ICON
+========================================================= */
+
+.stat-icon {
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 12px;
+
+    font-size: 20px;
+
+    background: #eaf6ed;
+}
+
+
+/* =========================================================
+   STAT LABEL
+========================================================= */
+
+.stat-label {
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+    color: #68766d;
+
+    background: #f2f5f3;
+}
+
+
+/* =========================================================
+   STAT NUMBER
+========================================================= */
+
+.stat-number {
+    color: #173e25;
+
+    font-size: 29px;
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    margin-bottom: 7px;
+}
+
+
+/* Spending */
+
+.stat-number.money {
+    font-size: 21px;
+
+    margin-top: 5px;
+}
+
+
+/* =========================================================
+   STAT DESCRIPTION
+========================================================= */
+
+.stat-card p {
+    margin: 0;
+
+    color: #7d8981;
+
+    font-size: 11px;
+
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   CARD COLORS
+========================================================= */
+
+
+/* Orders */
+
+.orders-card {
+    border-top: 4px solid #2c994c;
+}
+
+.orders-card .stat-icon {
+    background: #e4f5e8;
+}
+
+
+/* Pending */
+
+.pending-card {
+    border-top: 4px solid #e6a42c;
+}
+
+.pending-card .stat-icon {
+    background: #fff3dc;
+}
+
+
+/* Delivered */
+
+.delivered-card {
+    border-top: 4px solid #36a866;
+}
+
+.delivered-card .stat-icon {
+    background: #e3f6ea;
+}
+
+
+/* Spending */
+
+.spending-card {
+    border-top: 4px solid #7952a5;
+}
+
+.spending-card .stat-icon {
+    background: #f0e8f8;
+}
+
+
+/* =========================================================
+   DECORATIVE CIRCLE
+========================================================= */
+
+.stat-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 80px;
+    height: 80px;
+
+    right: -35px;
+    bottom: -38px;
+
+    border-radius: 50%;
+
+    background: rgba(46, 150, 70, 0.055);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   WELCOME CARD
+========================================================= */
+
+.welcome-card {
+    width: 100%;
+
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 27px 28px;
+
+    margin-bottom: 24px;
+
+    border-radius: 19px;
+
+    border: 1px solid #dfeae1;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f4faf4 55%,
+            #e9f6eb 100%
+        );
+
+    box-shadow:
+        0 8px 25px rgba(25, 80, 40, 0.065);
+
+    transition: box-shadow 0.25s ease;
+}
+
+
+.welcome-card:hover {
+    box-shadow:
+        0 12px 30px rgba(25, 80, 40, 0.11);
+}
+
+
+/* =========================================================
+   WELCOME CONTENT
+========================================================= */
+
+.welcome-content {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
+}
+
+
+/* =========================================================
+   WELCOME TAG
+========================================================= */
+
+.welcome-tag {
+    display: inline-block;
+
+    color: #37934c;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.2px;
+
+    margin-bottom: 5px;
+}
+
+
+/* =========================================================
+   WELCOME TITLE
+========================================================= */
+
+.welcome-card h2 {
+    color: #284531;
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+    margin: 3px 0 7px;
+}
+
+
+/* =========================================================
+   WELCOME DESCRIPTION
+========================================================= */
+
+.welcome-card p {
+    max-width: 680px;
+
+    color: #69766d;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+
+    margin: 0;
+}
+
+
+/* =========================================================
+   SHOPPING BUTTON
+========================================================= */
+
+.shopping-btn {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    margin-top: 16px;
+
+    padding: 10px 17px;
+
+    border-radius: 9px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2d9848,
+            #207b39
+        );
+
+    color: white;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    box-shadow:
+        0 6px 15px rgba(40, 135, 65, 0.16);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.shopping-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 9px 20px rgba(40, 135, 65, 0.25);
+}
+
+
+/* =========================================================
+   WELCOME ILLUSTRATION
+========================================================= */
+
+.welcome-illustration {
+    width: 105px;
+    height: 105px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #ffffff 0%,
+            #e3f4e5 70%
+        );
+
+    font-size: 50px;
+
+    box-shadow:
+        inset 0 0 0 8px rgba(255,255,255,0.65);
+}
+
+
+/* =========================================================
+   RESPONSIVE - 1100px
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - 800px
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .sidebar {
+        width: 210px;
+    }
+
+    .main-content {
+        width: calc(100% - 210px);
+
+        margin-left: 210px;
+
+        padding: 22px;
+    }
+
+    .top-header h1 {
+        font-size: 22px;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - 650px
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .sidebar {
+        width: 72px;
+
+        padding: 22px 8px;
+    }
+
+    .logo-section {
+        justify-content: center;
+
+        padding: 0;
+    }
+
+    .logo-section > div:not(.logo-icon) {
+        display: none;
+    }
+
+    .sidebar-menu a {
+        justify-content: center;
+
+        padding: 13px 5px;
+    }
+
+    .sidebar-menu a span:last-child {
+        display: none;
+    }
+
+    .main-content {
+        width: calc(100% - 72px);
+
+        margin-left: 72px;
+
+        padding: 18px;
+    }
+
+    .top-header {
+        padding: 15px 18px;
+    }
+
+    .top-header h1 {
+        font-size: 20px;
+    }
+
+    .small-title {
+        font-size: 10px;
+    }
+
+    .user-info strong,
+    .user-info span {
+        display: none;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 12px;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - 500px
+========================================================= */
+
+@media (max-width: 500px) {
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card {
+        min-height: 135px;
+    }
+
+    .welcome-card {
+        padding: 22px;
+    }
+
+    .welcome-content {
+        display: block;
+    }
+
+    .welcome-illustration {
+        display: none;
+    }
+
+    .welcome-card h2 {
+        font-size: 21px;
+    }
+
+}

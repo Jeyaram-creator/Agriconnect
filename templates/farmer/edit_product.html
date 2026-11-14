@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Edit Product</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='css/farmer.css') }}">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <div class="logo">🌾 AgriConnect</div>
+
+    <ul>
+
+        <li>
+            <a href="{{ url_for('farmer_dashboard') }}">
+                🏠 Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ url_for('farmer_profile') }}">
+                👤 My Profile
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ url_for('farmer_products') }}"
+               class="active">
+                🌱 My Products
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ url_for('add_product') }}">
+                ➕ Add Product
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ url_for('farmer_orders') }}">
+                🛒 Orders
+            </a>
+        </li>
+
+        <li>
+                <a href="{{ url_for('find_farmers') }}">
+                    🤝 Find Farmers
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('my_partnerships') }}">
+                    🔗 Partnerships
+                </a>
+            </li>
+
+        <li>
+            <a href="{{ url_for('logout') }}">
+                🚪 Logout
+            </a>
+        </li>
+
+    </ul>
+
+</div>
+
+
+<div class="main-content">
+
+    <div class="topbar">
+
+        <h2>Edit Product</h2>
+
+    </div>
+
+
+    <div class="card">
+
+        <form method="POST">
+
+            <div class="form-group">
+
+                <label>Product Name</label>
+
+                <input
+                    type="text"
+                    name="product_name"
+                    value="{{ product[1] }}"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Category</label>
+
+                <select name="category">
+
+                    <option value="Vegetable"
+                        {% if product[2] == 'Vegetable' %}
+                        selected
+                        {% endif %}>
+                        Vegetable
+                    </option>
+
+                    <option value="Fruit"
+                        {% if product[2] == 'Fruit' %}
+                        selected
+                        {% endif %}>
+                        Fruit
+                    </option>
+
+                    <option value="Grain"
+                        {% if product[2] == 'Grain' %}
+                        selected
+                        {% endif %}>
+                        Grain
+                    </option>
+
+                    <option value="Pulse"
+                        {% if product[2] == 'Pulse' %}
+                        selected
+                        {% endif %}>
+                        Pulse
+                    </option>
+
+                    <option value="Spice"
+                        {% if product[2] == 'Spice' %}
+                        selected
+                        {% endif %}>
+                        Spice
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Description</label>
+
+                <textarea
+                    name="description"
+                    rows="4">{{ product[3] }}</textarea>
+
+            </div>
+
+
+            <div class="profile-grid">
+
+                <div class="form-group">
+
+                    <label>Quantity</label>
+
+                    <input
+                        type="number"
+                        step="0.01"
+                        name="quantity"
+                        value="{{ product[4] }}"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Unit</label>
+
+                    <select name="unit">
+
+                        <option value="kg"
+                            {% if product[5] == 'kg' %}
+                            selected
+                            {% endif %}>
+                            Kilogram
+                        </option>
+
+                        <option value="ton"
+                            {% if product[5] == 'ton' %}
+                            selected
+                            {% endif %}>
+                            Ton
+                        </option>
+
+                        <option value="liter"
+                            {% if product[5] == 'liter' %}
+                            selected
+                            {% endif %}>
+                            Liter
+                        </option>
+
+                        <option value="piece"
+                            {% if product[5] == 'piece' %}
+                            selected
+                            {% endif %}>
+                            Piece
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Price</label>
+
+                    <input
+                        type="number"
+                        step="0.01"
+                        name="price"
+                        value="{{ product[6] }}"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Location</label>
+
+                    <input
+                        type="text"
+                        name="location"
+                        value="{{ product[7] }}">
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Status</label>
+
+                <select name="status">
+
+                    <option value="available"
+                        {% if product[8] == 'available' %}
+                        selected
+                        {% endif %}>
+                        Available
+                    </option>
+
+                    <option value="out_of_stock"
+                        {% if product[8] == 'out_of_stock' %}
+                        selected
+                        {% endif %}>
+                        Out of Stock
+                    </option>
+
+                    <option value="inactive"
+                        {% if product[8] == 'inactive' %}
+                        selected
+                        {% endif %}>
+                        Inactive
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="form-btn">
+
+                Update Product
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

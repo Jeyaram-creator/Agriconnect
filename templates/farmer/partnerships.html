@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>My Partnerships</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='css/farmer.css') }}">
+
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <div class="logo">
+        🌾 AgriConnect
+    </div>
+
+    <ul>
+
+        <li>
+            <a href="{{ url_for('farmer_dashboard') }}">
+                🏠 Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ url_for('farmer_profile') }}">
+                👤 My Profile
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ url_for('farmer_products') }}">
+                🌱 My Products
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ url_for('add_product') }}">
+                ➕ Add Product
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ url_for('find_farmers') }}">
+                🤝 Find Farmers
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ url_for('my_partnerships') }}"
+               class="active">
+                🔗 Partnerships
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ url_for('farmer_orders') }}">
+                🛒 Orders
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ url_for('logout') }}">
+                🚪 Logout
+            </a>
+        </li>
+
+    </ul>
+
+</div>
+
+
+<div class="main-content">
+
+    <div class="topbar">
+
+        <h2>My Partnerships</h2>
+
+    </div>
+
+
+    <!-- Incoming Requests -->
+
+    <div class="card">
+
+        <h3>Partnership Requests</h3>
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Farmer</th>
+                        <th>Farm Name</th>
+                        <th>Location</th>
+                        <th>Status</th>
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for request in requests %}
+
+                    <tr>
+
+                        <td>
+                            {{ request[1] }}
+                        </td>
+
+                        <td>
+                            {{ request[2] or 'Not Provided' }}
+                        </td>
+
+                        <td>
+                            {{ request[3] or 'Not Provided' }}
+                        </td>
+
+                        <td>
+                            {{ request[4] }}
+                        </td>
+
+                        <td>
+
+                            <a
+                                href="{{ url_for(
+                                'respond_partnership',
+                                partnership_id=request[0],
+                                action='accepted'
+                                ) }}"
+                                class="btn btn-primary">
+
+                                Accept
+
+                            </a>
+
+
+                            <a
+                                href="{{ url_for(
+                                'respond_partnership',
+                                partnership_id=request[0],
+                                action='rejected'
+                                ) }}"
+                                class="btn btn-danger">
+
+                                Reject
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    {% else %}
+
+                    <tr>
+
+                        <td colspan="5">
+                            No pending requests.
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!-- My Partnerships -->
+
+    <div class="card">
+
+        <h3>My Partner Farmers</h3>
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Farmer</th>
+                        <th>Farm Name</th>
+                        <th>Location</th>
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for partner in partnerships %}
+
+                    <tr>
+
+                        <td>
+                            {{ partner[1] }}
+                        </td>
+
+                        <td>
+                            {{ partner[2] or 'Not Provided' }}
+                        </td>
+
+                        <td>
+                            {{ partner[3] or 'Not Provided' }}
+                        </td>
+
+                        <td>
+                            {{ partner[4] }}
+                        </td>
+
+                    </tr>
+
+                    {% else %}
+
+                    <tr>
+
+                        <td colspan="4">
+                            No partnerships yet.
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
